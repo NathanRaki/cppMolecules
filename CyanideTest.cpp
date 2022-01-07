@@ -5,6 +5,7 @@
 int main()
 {
     // Part 1
+    std::cout << "PART 1" << std::endl;
     {
         Atom* h = new Atom("H", 1);
         std::cout << "Hydrogen: " << h->GetName() << " " << h->GetMass() << std::endl;
@@ -23,7 +24,10 @@ int main()
         delete h, p0;
     }
 
+    std::cout << std::endl;
+
     // Part 2
+    std::cout << "PART 2" << std::endl;
     {
         std::vector<Gaz*> gazArray;
 
@@ -50,17 +54,21 @@ int main()
 
         gazArray.push_back(g1); gazArray.push_back(g2); gazArray.push_back(g3);
 
+        std::cout << "Gaz 1 : S2O2I (Distincts: S, O, I)" << std::endl;
+        std::cout << "Gaz 2 : H4O2 (Distincts: H, O)" << std::endl;
+        std::cout << "Gaz 3 : H2O3S (Distincts: H, O, S)" << std::endl;
+
+        std::cout << "Sorting by distinct atoms count" << std::endl;
         // ### Sorting ###
-        std::cout << std::endl << "Before sorting" << std::endl;
+        std::cout << "\tBefore sorting" << std::endl << "\t";
         for (Gaz* g : gazArray)
         {
             std::cout << GetDistinctsAtomsCount(*g) << " ";
         }
-        std::cout << std::endl;
 
         std::sort(gazArray.begin(), gazArray.end(), [](const Gaz* lhs, const Gaz* rhs) { return GetDistinctsAtomsCount(*lhs) < GetDistinctsAtomsCount(*rhs); });
 
-        std::cout << std::endl << "After sorting" << std::endl;
+        std::cout << std::endl << "\tAfter sorting" << std::endl << "\t";
         for (Gaz* g : gazArray)
         {
             std::cout << GetDistinctsAtomsCount(*g) << " ";
